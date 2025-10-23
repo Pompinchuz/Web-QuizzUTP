@@ -579,7 +579,11 @@ Authorization: Bearer {token}
 ### Login / Registro
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/reporte_notas.png" alt="Reporte Administrador" width="600"/>
+  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/login-quizz.png" alt="Reporte Administrador" width="600"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/registrarse.png" alt="Reporte Administrador" width="600"/>
 </p>
 
 *Interfaz moderna con gradientes morado-azul*
@@ -593,23 +597,14 @@ Authorization: Bearer {token}
 
 ### Quiz Interface
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/reporte_notas.png" alt="Reporte Administrador" width="600"/>
+  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/quizzim.png" alt="Reporte Administrador" width="600"/>
 </p>
 
 *Las opciones se vuelven verdes (correctas) o rojas (incorrectas)*
 
 ### Panel de Administración
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/reporte_notas.png" alt="Reporte Administrador" width="600"/>
-</p>
-
-
-### 📊 Reportes (Administrador)
-
-Vista general de reportes del administrador con estadísticas e historial de resultados.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Pompinchuz/bunker_hr/refs/heads/main/celulares/reporte_notas.png" alt="Reporte Administrador" width="600"/>
+  <img src="https://github.com/Pompinchuz/bunker_hr/blob/main/celulares/panel-administracion.png?raw=true" alt="Reporte Administrador" width="600"/>
 </p>
 
 
