@@ -1,0 +1,239 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 266338304 bytes. Error detail: G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3713), pid=25444, tid=20100
+#
+# JRE version:  (21.0.8+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (21.0.8+9-LTS, mixed mode, emulated-client, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xmx1024m -Dsts.lsp.client=vscode -Dsts.log.file=/dev/null -XX:TieredStopAtLevel=1 -Xlog:jni+resolve=off -Dspring.config.location=file:c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\classes\application.properties org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+
+Host: Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz, 8 cores, 15G,  Windows 11 , 64 bit Build 26100 (10.0.26100.6725)
+Time: Thu Oct 23 05:35:46 2025 Hora est. Pacífico, Sudamérica elapsed time: 2.058368 seconds (0d 0h 0m 2s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000020ef69d5360):  JavaThread "Unknown thread" [_thread_in_vm, id=20100, stack(0x000000500b000000,0x000000500b100000) (1024K)]
+
+Stack: [0x000000500b000000,0x000000500b100000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6d2449]
+V  [jvm.dll+0x8ae341]
+V  [jvm.dll+0x8b08be]
+V  [jvm.dll+0x8b0fa3]
+V  [jvm.dll+0x280c96]
+V  [jvm.dll+0x6cec15]
+V  [jvm.dll+0x6c2c3a]
+V  [jvm.dll+0x35867a]
+V  [jvm.dll+0x360246]
+V  [jvm.dll+0x3b1f9e]
+V  [jvm.dll+0x3b2248]
+V  [jvm.dll+0x32c8fc]
+V  [jvm.dll+0x32d45b]
+V  [jvm.dll+0x8775d9]
+V  [jvm.dll+0x3bed71]
+V  [jvm.dll+0x8605d3]
+V  [jvm.dll+0x4530ee]
+V  [jvm.dll+0x454d31]
+C  [jli.dll+0x5278]
+C  [ucrtbase.dll+0x37b0]
+C  [KERNEL32.DLL+0x2e8d7]
+C  [ntdll.dll+0x8c53c]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffcbf0211c8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x0000020ef6a0f8e0 WorkerThread "GC Thread#0"                     [id=33264, stack(0x000000500b100000,0x000000500b200000) (1024K)]
+  0x0000020ef6a19650 ConcurrentGCThread "G1 Main Marker"            [id=14196, stack(0x000000500b200000,0x000000500b300000) (1024K)]
+  0x0000020ef6a1a800 WorkerThread "G1 Conc#0"                       [id=31968, stack(0x000000500b300000,0x000000500b400000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffcbe71f137]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffcbf095558] Heap_lock - owner thread: 0x0000020ef69d5360
+
+Heap address: 0x00000000c0000000, size: 1024 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x00000000c0000000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffcbeb0bba9]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.025 Loaded shared library c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7b1b70000 - 0x00007ff7b1b7e000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\java.exe
+0x00007ffd704c0000 - 0x00007ffd70728000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffd6f990000 - 0x00007ffd6fa59000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffd6dce0000 - 0x00007ffd6e0d2000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffd6d830000 - 0x00007ffd6d97b000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffce8a60000 - 0x00007ffce8a78000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\jli.dll
+0x00007ffce8380000 - 0x00007ffce839e000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\VCRUNTIME140.dll
+0x00007ffd6faf0000 - 0x00007ffd6fcb5000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffd6e0e0000 - 0x00007ffd6e107000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffd56490000 - 0x00007ffd56723000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.6899_none_3e0efeeae32e88c1\COMCTL32.dll
+0x00007ffd6e2a0000 - 0x00007ffd6e349000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffd6ece0000 - 0x00007ffd6ed0b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffd6d700000 - 0x00007ffd6d82d000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffd6d650000 - 0x00007ffd6d6f3000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffd70050000 - 0x00007ffd7007f000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffd4e680000 - 0x00007ffd4e68c000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\vcruntime140_1.dll
+0x00007ffce82f0000 - 0x00007ffce837d000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\msvcp140.dll
+0x00007ffcbe3e0000 - 0x00007ffcbf177000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\server\jvm.dll
+0x00007ffd6ef90000 - 0x00007ffd6f044000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffd6ffa0000 - 0x00007ffd70046000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffd6ed10000 - 0x00007ffd6ee28000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffd6fec0000 - 0x00007ffd6ff34000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffd6d4b0000 - 0x00007ffd6d50e000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffd5b340000 - 0x00007ffd5b375000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffd635f0000 - 0x00007ffd635fb000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffd6d490000 - 0x00007ffd6d4a4000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffd6c420000 - 0x00007ffd6c43b000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffd42f60000 - 0x00007ffd42f6a000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\jimage.dll
+0x00007ffd6adf0000 - 0x00007ffd6b032000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffd6f610000 - 0x00007ffd6f98b000 	C:\WINDOWS\System32\combase.dll
+0x00007ffd6f050000 - 0x00007ffd6f127000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffd4f6c0000 - 0x00007ffd4f6fc000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffd6d980000 - 0x00007ffd6da18000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffce82d0000 - 0x00007ffce82ef000 	c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\java.dll
+
+JVMTI agents: none
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.6899_none_3e0efeeae32e88c1;c:\Users\huill\.vscode\extensions\redhat.java-1.46.0-win32-x64\jre\21.0.8-win32-x86_64\bin\server
+
+VM Arguments:
+jvm_args: -Xmx1024m -Dsts.lsp.client=vscode -Dsts.log.file=/dev/null -XX:TieredStopAtLevel=1 -Xlog:jni+resolve=off -Dspring.config.location=file:c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\classes\application.properties 
+java_command: org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+java_class_path (initial): c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\classes;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\annotations-24.1.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\antlr4-runtime-4.13.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\asm-9.7.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\asm-analysis-9.7.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\asm-tree-9.7.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\asm-util-9.7.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\caffeine-3.1.8.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\checker-qual-3.12.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\classgraph-4.8.149.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-codec-1.16.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-compress-1.26.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-io-2.16.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-java-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-lang3-3.14.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-language-server-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-lsp-extensions-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-rewrite-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-text-1.12.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-util-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\commons-yaml-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\docker-java-api-3.3.6.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\docker-java-transport-3.3.6.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\docker-java-transport-zerodep-3.3.6.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\duct-tape-1.0.8.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\ecj-3.38.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\error_prone_annotations-2.11.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\failsafe-3.3.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\failureaccess-1.0.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\fastfilter-1.0.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\functionaljava-5.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\gizmo-1.0.11.Final.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\gradle-tooling-api-8.4.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\groovy-3.0.22.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\gson-2.10.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\guava-31.1-jre.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\hamcrest-2.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\hamcrest-core-2.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\HdrHistogram-2.2.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\isorelax-20030108.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\j2objc-annotations-1.3.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-annotations-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-core-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-databind-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-dataformat-csv-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-dataformat-smile-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-dataformat-xml-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-datatype-jdk8-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-datatype-jsr310-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-module-jaxb-annotations-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jackson-module-parameter-names-2.17.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jakarta.activation-api-2.1.3.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jakarta.annotation-api-2.1.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jakarta.xml.bind-api-4.0.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jandex-3.1.6.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\java-object-diff-0.95.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\java-object-diff-1.0.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\java-properties-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\JavaEWAH-1.2.3.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\javax.activation-api-1.2.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\javax.inject-1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\javolution-core-java-6.0.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jaxb-api-2.3.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jgit-1.2.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jing-20220510.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jna-5.14.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jna-platform-5.14.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jpql-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\json-20231013.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jsoup-1.14.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jsr305-3.0.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\jul-to-slf4j-2.0.13.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\junit-4.13.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-compiler-embeddable-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-daemon-embeddable-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-reflect-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-script-runtime-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-stdlib-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-stdlib-common-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-stdlib-jdk7-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\kotlin-stdlib-jdk8-1.9.20.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\language-server-starter-1.56.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\LatencyUtils-2.0.3.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\log4j-api-2.23.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\log4j-to-slf4j-2.23.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\logback-classic-1.5.6.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\logback-core-1.5.6.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\micrometer-commons-1.13.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\micrometer-core-1.13.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\micrometer-observation-1.13.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\model-2.3.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\okhttp-4.12.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\okio-3.6.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\okio-jvm-3.6.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.commands-3.12.100.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.contenttype-3.9.400.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.expressions-3.9.400.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.filesystem-1.10.400.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.jobs-3.15.300.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.resources-3.20.200.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.core.runtime-3.31.100.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.equinox.app-1.7.100.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.equinox.common-3.19.100.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.equinox.preferences-3.10.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.equinox.registry-3.12.100.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.jdt.core-3.38.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.jgit-6.9.0.202403050737-r.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.lemminx-0.24.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.lsp4j-0.19.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.lsp4j.generator-0.19.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.lsp4j.jsonrpc-0.19.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.osgi-3.20.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.text-3.14.100.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.xtend.lib-2.28.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.xtend.lib.macro-2.28.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.eclipse.xtext.xbase.lib-2.28.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.json-1.0.0-SNAPSHOT.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\org.osgi.service.prefs-1.1.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\osgi.annotation-8.1.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\reactive-streams-1.0.4.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\reactor-core-3.6.7.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\remark-1.0.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-analysis-2.9.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-core-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-github-actions-2.6.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-gradle-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-groovy-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-hibernate-1.8.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-java-11-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-java-17-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-java-21-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-java-8-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-java-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-java-dependencies-1.12.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-jenkins-0.8.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-kotlin-1.18.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-maven-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-migrate-java-2.19.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-openapi-0.5.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-properties-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-spring-5.14.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-static-analysis-1.11.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-templating-1.11.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-testing-frameworks-2.13.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-xml-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\rewrite-yaml-8.29.0.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\slf4j-api-2.0.13.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\snakeyaml-2.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\snappy-java-1.1.10.5.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-aop-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-beans-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-boot-3.3.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-boot-autoconfigure-3.3.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-boot-jarmode-tools-3.3.1.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-context-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-context-indexer-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-core-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-expression-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-jcl-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\spring-web-6.1.10.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\stax2-api-4.2.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\testcontainers-1.19.8.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\trove4j-1.0.20200330.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\woodstox-core-6.6.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\xercesImpl-2.12.2.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\xml-apis-1.4.01.jar;c:\Users\huill\.vscode\extensions\vmware.vscode-spring-boot-1.56.0\language-server\BOOT-INF\lib\xml-resolver-1.2.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 266338304                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1073741824                                {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 4096                                   {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 0                                      {pd product} {ergonomic}
+     bool ProfileInterpreter                       = false                                  {pd product} {command line}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 1073741824                             {manageable} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning,jni+resolve=off uptime,level,tags foldmultilines=false (reconfigured)
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Python313\Scripts\;C:\Python313\;C:\Users\huill\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\huill\AppData\Local\Programs\Python\Python312\;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\lua;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\huill\Desktop\ToolsPhyton\Graphviz-12.2.1-win64\bin;C:\Users\huill\Desktop\JAVA_mavens\apache-maven-3.9.10-bin\apache-maven-3.9.10\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\huill\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\huill\AppData\Local\Programs\Python\Launcher\;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Users\huill\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Azure Data Studio\bin;C:\Program Files\Java\jdk-17\bin;C:\Users\huill\.dotnet\tools;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.5\bin;;C:\msys64\mingw64\bin;C:\Users\huill\AppData\Local\Programs\Python\Python312\;C:\Users\huill\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\huill\Desktop\JAVA_mavens\apache-maven-3.9.10-bin\apache-maven-3.9.10\bin;C:\Users\huill\AppData\Roaming\npm;C:\Users\huill\AppData\Local\nvm;C:\nvm4w\nodejs
+USERNAME=huill
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 165 Stepping 2, GenuineIntel
+TMP=C:\Users\huill\AppData\Local\Temp
+TEMP=C:\Users\huill\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.6725)
+OS uptime: 3 days 13:20 hours
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 165 stepping 2 microcode 0xe0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt, rdtscp, f16c, pku
+Processor Information for the first 8 processors :
+  Max Mhz: 2496, Current Mhz: 2496, Mhz Limit: 2496
+
+Memory: 4k page, system-wide physical 16221M (3656M free)
+TotalPageFile size 24413M (AvailPageFile size 186M)
+current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
+current process commit charge ("private bytes"): 55M, peak: 309M
+
+vm_info: OpenJDK 64-Bit Server VM (21.0.8+9-LTS) for windows-amd64 JRE (21.0.8+9-LTS), built on 2025-07-15T00:00:00Z by "admin" with MS VC++ 17.7 (VS2022)
+
+END.
