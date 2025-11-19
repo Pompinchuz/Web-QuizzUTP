@@ -39,3 +39,6 @@ application.yml
 application-dev.properties
 application-test.properties
 application-local.properties
+
+
+backend/src/main/resources/application.properties
