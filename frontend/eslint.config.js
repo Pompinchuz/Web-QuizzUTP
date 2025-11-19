@@ -75,7 +75,7 @@ export default [
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
       'comma-dangle': ['error', 'always-multiline'],
       'quotes': ['error', 'single', { avoidEscape: true }],
-      'semi': ['error', 'never'],
+      'semi': ['error', 'always'],
       'indent': ['error', 2, { SwitchCase: 1 }],
 
       // Reglas específicas de React

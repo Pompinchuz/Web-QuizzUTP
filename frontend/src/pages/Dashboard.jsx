@@ -15,7 +15,7 @@ export default function Dashboard({ user, onStartQuiz, onViewReports, onLogout }
           </button>
         </div>
       </nav>
-      
+
       <div className="dashboard-content">
         <div className="welcome-card">
           <div className="welcome-header">

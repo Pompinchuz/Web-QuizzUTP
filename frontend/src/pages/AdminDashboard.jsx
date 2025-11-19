@@ -21,7 +21,7 @@ export default function AdminDashboard({ user, onViewReports, onLogout }) {
     try {
       const [questionsData, statsData] = await Promise.all([
         adminService.getAllQuestions(),
-        adminService.getStats()
+        adminService.getStats(),
       ]);
       setQuestions(questionsData);
       setStats(statsData);
