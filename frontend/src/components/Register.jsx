@@ -30,7 +30,7 @@ export default function Register({ onRegister, onSwitchToLogin }) {
         setError(result.message || 'Error al registrarse');
       }
     } catch (err) {
-      console.log(err);
+      console.error('Error de conexión:', err);
       setError('Error de conexión. Verifica que el servidor esté activo.');
     } finally {
       setLoading(false);
