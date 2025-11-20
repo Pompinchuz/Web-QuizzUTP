@@ -1,6 +1,12 @@
 
 // src/App.jsx
 import { useState, useEffect } from 'react';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './pages/Dashboard';
+import Quiz from './pages/Quiz';
+import AdminDashboard from './pages/AdminDashboard';
+import Reports from './pages/Reports';
 import { authService } from './services/api';
 import './App.css';
 
