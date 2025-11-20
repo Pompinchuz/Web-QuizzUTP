@@ -11,7 +11,7 @@ export default function QuestionForm({ question, onSubmit, onCancel }) {
     option3: '',
     option4: '',
     correctAnswer: 1,
-    difficulty: 'medio'
+    difficulty: 'medio',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -26,7 +26,7 @@ export default function QuestionForm({ question, onSubmit, onCancel }) {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'correctAnswer' ? parseInt(value) : value
+      [name]: name === 'correctAnswer' ? parseInt(value) : value,
     }));
   };
 
@@ -43,6 +43,7 @@ export default function QuestionForm({ question, onSubmit, onCancel }) {
       }
       onSubmit();
     } catch (err) {
+      console.log(err);
       setError('Error al guardar la pregunta');
     } finally {
       setLoading(false);

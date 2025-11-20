@@ -1,10 +1,10 @@
 // src/pages/AdminDashboard.jsx
 import { useState, useEffect } from 'react';
 import { adminService } from '../services/api';
-import QuestionForm from '../components/QuestionForm';
+
 import './AdminDashboard.css';
 
-export default function AdminDashboard({ user, onViewReports, onLogout }) {
+export default function AdminDashboard({ onLogout }) {
   const [questions, setQuestions] = useState([]);
   const [stats, setStats] = useState({ totalQuestions: 0 });
   const [showForm, setShowForm] = useState(false);
