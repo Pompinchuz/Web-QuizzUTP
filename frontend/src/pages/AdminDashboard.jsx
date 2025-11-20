@@ -1,7 +1,7 @@
 // src/pages/AdminDashboard.jsx
 import { useState, useEffect } from 'react';
 import { adminService } from '../services/api';
-
+import QuestionForm from '../components/QuestionForm';
 import './AdminDashboard.css';
 
 export default function AdminDashboard({ onLogout }) {
