@@ -11,6 +11,7 @@ export default function Reports({ user, onBack }) {
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = async () => {
@@ -19,7 +20,7 @@ export default function Reports({ user, onBack }) {
       if (isAdmin) {
         const [allResults, generalStats] = await Promise.all([
           reportService.getAllResults(),
-          reportService.getGeneralStats()
+          reportService.getGeneralStats(),
         ]);
         setResults(allResults);
         setStats(generalStats);
@@ -48,7 +49,7 @@ export default function Reports({ user, onBack }) {
     setStats({
       averageScore: averageScore.toFixed(1),
       totalAttempts: results.length,
-      bestScore: bestScore
+      bestScore: bestScore,
     });
   };
 
@@ -59,7 +60,7 @@ export default function Reports({ user, onBack }) {
       month: 'short',
       day: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     });
   };
 
@@ -129,7 +130,7 @@ export default function Reports({ user, onBack }) {
         {/* Tabla de resultados */}
         <div className="results-section">
           <h2 className="section-title">Historial de Resultados</h2>
-          
+
           {results.length === 0 ? (
             <div className="no-results">
               <p>No hay resultados disponibles</p>
@@ -167,10 +168,10 @@ export default function Reports({ user, onBack }) {
                       </td>
                       <td>
                         <div className="percentage-bar">
-                          <div 
+                          <div
                             className="percentage-fill"
-                            style={{ 
-                              width: `${(result.correctAnswers / result.totalQuestions) * 100}%` 
+                            style={{
+                              width: `${(result.correctAnswers / result.totalQuestions) * 100}%`,
                             }}
                           />
                           <span className="percentage-text">

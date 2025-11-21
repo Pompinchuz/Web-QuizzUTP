@@ -27,20 +27,20 @@ export default function Dashboard({ user, onStartQuiz, onViewReports, onLogout }
               </div>
             </div>
           </div>
-          
+
           <div className="quiz-info">
             <h3 className="quiz-info-title">Quiz de Programación</h3>
             <p className="quiz-info-text">
               Pon a prueba tus conocimientos con 10 preguntas sobre programación.
               ¡Cada respuesta correcta suma 10 puntos!
             </p>
-            
+
             <ul className="quiz-features">
               <li>✓ 10 preguntas aleatorias</li>
               <li>✓ Temas variados de programación</li>
               <li>✓ Resultados instantáneos</li>
             </ul>
-            
+
             <button onClick={onStartQuiz} className="start-quiz-button">
               <span className="button-icon">🚀</span>
               Comenzar Quiz

@@ -28,11 +28,11 @@ export default function Quiz({ user, onFinish }) {
   };
 
   const handleAnswerClick = (answerIndex) => {
-    if (answered) return;
-    
+    if (answered) {return;}
+
     setSelectedAnswer(answerIndex);
     setAnswered(true);
-    
+
     const isCorrect = answerIndex === questions[currentQuestion].correctAnswer;
     if (isCorrect) {
       setScore(score + 10);
@@ -51,19 +51,19 @@ export default function Quiz({ user, onFinish }) {
 
   const finishQuiz = async (finalScore) => {
     setShowResult(true);
-    
+
     const correctAnswers = Math.floor(finalScore / 10);
     const incorrectAnswers = questions.length - correctAnswers;
-    
+
     try {
       // Guardar resultado en la base de datos
       await reportService.saveResult({
         score: finalScore,
         totalQuestions: questions.length,
         correctAnswers: correctAnswers,
-        incorrectAnswers: incorrectAnswers
+        incorrectAnswers: incorrectAnswers,
       });
-      
+
       // Actualizar mejor puntuación
       await authService.updateScore(user.id, finalScore);
     } catch (error) {
@@ -72,13 +72,13 @@ export default function Quiz({ user, onFinish }) {
   };
 
   const getAnswerClass = (index) => {
-    if (!answered) return 'answer-option';
-    
+    if (!answered) {return 'answer-option';}
+
     const isCorrect = index === questions[currentQuestion].correctAnswer;
     const isSelected = index === selectedAnswer;
-    
-    if (isCorrect) return 'answer-option correct';
-    if (isSelected && !isCorrect) return 'answer-option incorrect';
+
+    if (isCorrect) {return 'answer-option correct';}
+    if (isSelected && !isCorrect) {return 'answer-option incorrect';}
     return 'answer-option';
   };
 
@@ -102,9 +102,9 @@ export default function Quiz({ user, onFinish }) {
           </div>
           <div className="result-message">
             {score >= 80 ? '🎉 ¡Excelente trabajo!' :
-             score >= 60 ? '👍 ¡Buen trabajo!' :
-             score >= 40 ? '💪 Sigue practicando' :
-             '📚 Necesitas estudiar más'}
+              score >= 60 ? '👍 ¡Buen trabajo!' :
+                score >= 40 ? '💪 Sigue practicando' :
+                  '📚 Necesitas estudiar más'}
           </div>
           <button onClick={onFinish} className="return-button">
             Volver al Inicio
@@ -120,8 +120,8 @@ export default function Quiz({ user, onFinish }) {
     <div className="quiz-container">
       <div className="quiz-header">
         <div className="progress-bar">
-          <div 
-            className="progress-fill" 
+          <div
+            className="progress-fill"
             style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
           />
         </div>
@@ -135,7 +135,7 @@ export default function Quiz({ user, onFinish }) {
 
       <div className="question-card">
         <h2 className="question-text">{question.questionText}</h2>
-        
+
         <div className="answers-grid">
           {[1, 2, 3, 4].map((num) => (
             <button
