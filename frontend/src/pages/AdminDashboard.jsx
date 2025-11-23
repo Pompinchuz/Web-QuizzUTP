@@ -7,6 +7,7 @@ import './AdminDashboard.css';
 export default function AdminDashboard({ onLogout }) {
   const [questions, setQuestions] = useState([]);
   const [stats, setStats] = useState({ totalQuestions: 0 });
+  const [studentStats, setStudentStats] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,12 +20,14 @@ export default function AdminDashboard({ onLogout }) {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [questionsData, statsData] = await Promise.all([
+      const [questionsData, statsData, studentStatsData] = await Promise.all([
         adminService.getAllQuestions(),
         adminService.getStats(),
+        reportService.getGeneralStats(),
       ]);
       setQuestions(questionsData);
       setStats(statsData);
+      setStudentStats(studentStatsData);
     } catch (error) {
       console.error('Error al cargar datos:', error);
     } finally {
@@ -90,9 +93,37 @@ export default function AdminDashboard({ onLogout }) {
       ) : (
         <div className="admin-content">
           <div className="admin-header">
-            <div className="stats-card">
-              <div className="stat-value">{stats.totalQuestions}</div>
-              <div className="stat-label">Total de Preguntas</div>
+            <div className="stats-grid">
+              <div className="stats-card">
+                <div className="stat-icon">📝</div>
+                <div className="stat-info">
+                  <div className="stat-value">{stats.totalQuestions}</div>
+                  <div className="stat-label">Total de Preguntas</div>
+                </div>
+              </div>
+              <div className="stats-card">
+                <div className="stat-icon">👥</div>
+                <div className="stat-info">
+                  <div className="stat-value">{studentStats?.totalStudents || 0}</div>
+                  <div className="stat-label">Total Estudiantes</div>
+                </div>
+              </div>
+              <div className="stats-card">
+                <div className="stat-icon">📊</div>
+                <div className="stat-info">
+                  <div className="stat-value">
+                    {studentStats?.averageScore?.toFixed(1) || '0.0'}
+                  </div>
+                  <div className="stat-label">Promedio General</div>
+                </div>
+              </div>
+              <div className="stats-card">
+                <div className="stat-icon">🎯</div>
+                <div className="stat-info">
+                  <div className="stat-value">{studentStats?.totalAttempts || 0}</div>
+                  <div className="stat-label">Total Intentos</div>
+                </div>
+              </div>
             </div>
             <button onClick={handleCreate} className="btn-create">
               ➕ Nueva Pregunta
