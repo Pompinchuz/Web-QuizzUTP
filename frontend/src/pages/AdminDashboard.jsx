@@ -1,6 +1,6 @@
 // src/pages/AdminDashboard.jsx
 import { useState, useEffect } from 'react';
-import { adminService, reportService } from '../services/api';
+import { adminService } from '../services/api';
 import QuestionForm from '../components/QuestionForm';
 import './AdminDashboard.css';
 
