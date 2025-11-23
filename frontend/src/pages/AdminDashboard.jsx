@@ -25,11 +25,18 @@ export default function AdminDashboard({ onLogout }) {
         adminService.getStats(),
         reportService.getGeneralStats(),
       ]);
+
       setQuestions(questionsData);
       setStats(statsData);
       setStudentStats(studentStatsData);
     } catch (error) {
       console.error('Error al cargar datos:', error);
+      // Establecer valores por defecto en caso de error
+      setStudentStats({
+        averageScore: 0,
+        totalStudents: 0,
+        totalAttempts: 0,
+      });
     } finally {
       setLoading(false);
     }
@@ -112,7 +119,9 @@ export default function AdminDashboard({ onLogout }) {
                 <div className="stat-icon">📊</div>
                 <div className="stat-info">
                   <div className="stat-value">
-                    {studentStats?.averageScore?.toFixed(1) || '0.0'}
+                    {studentStats?.averageScore !== undefined
+                      ? Number(studentStats.averageScore).toFixed(1)
+                      : '0.0'}
                   </div>
                   <div className="stat-label">Promedio General</div>
                 </div>
