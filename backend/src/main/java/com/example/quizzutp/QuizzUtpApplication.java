@@ -12,7 +12,7 @@ public class QuizzUtpApplication {
 		Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
 		System.setProperty("URL_D", dotenv.get("URL_D"));
 		System.setProperty("USER_D", dotenv.get("USER_D"));
-		System.setProperty("PASS_D", dotenv.get("PASS_D"));
+		System.setProperty("PASSWORD_D", dotenv.get("PASSWORD_D"));
 		
 		SpringApplication.run(QuizzUtpApplication.class, args);
 	}

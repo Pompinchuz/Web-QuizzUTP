@@ -29,3 +29,7 @@ dist-ssr
 /build
 
 
+
+.env
+.env.local
+.env.production

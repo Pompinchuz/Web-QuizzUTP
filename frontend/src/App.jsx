@@ -95,14 +95,14 @@ function App() {
           onSwitchToRegister={() => setCurrentView('register')}
         />
       )}
-      
+
       {currentView === 'register' && (
         <Register
           onRegister={handleRegister}
           onSwitchToLogin={() => setCurrentView('login')}
         />
       )}
-      
+
       {currentView === 'dashboard' && user && (
         <Dashboard
           user={user}
@@ -111,14 +111,14 @@ function App() {
           onLogout={handleLogout}
         />
       )}
-      
+
       {currentView === 'quiz' && user && (
         <Quiz
           user={user}
           onFinish={handleFinishQuiz}
         />
       )}
-      
+
       {currentView === 'admin' && user && (
         <AdminDashboard
           user={user}
@@ -126,7 +126,7 @@ function App() {
           onLogout={handleLogout}
         />
       )}
-      
+
       {currentView === 'reports' && user && (
         <Reports
           user={user}
