@@ -58,7 +58,7 @@ public class QuizResultService {
         stats.put("totalAttempts", quizResultRepository.getTotalAttempts());
 
         // Total de estudiantes (solo rol ESTUDIANTE)
-         Long totalStudents = usuariosRepository.countByRole(Usuarios.Role.ESTUDIANTE);0
+         Long totalStudents = usuariosRepository.countByRole(Usuarios.Role.ESTUDIANTE);
         stats.put("totalStudents", totalStudents);
 
         return stats;
