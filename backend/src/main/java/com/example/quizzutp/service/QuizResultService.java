@@ -49,9 +49,18 @@ public class QuizResultService {
     
     public Map<String, Object> getGeneralStats() {
         Map<String, Object> stats = new HashMap<>();
-        stats.put("averageScore", quizResultRepository.getAverageScore());
+
+        // Obtener promedio de scores (puede ser null si no hay resultados)
+        Double averageScore = quizResultRepository.getAverageScore();
+        stats.put("averageScore", averageScore != null ? averageScore : 0.0);
+
+        // Total de intentos
         stats.put("totalAttempts", quizResultRepository.getTotalAttempts());
-        stats.put("totalStudents", usuariosRepository.count());
+
+        // Total de estudiantes (solo rol ESTUDIANTE)
+         Long totalStudents = usuariosRepository.countByRole(Usuarios.Role.ESTUDIANTE);0
+        stats.put("totalStudents", totalStudents);
+
         return stats;
     }
 }

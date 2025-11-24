@@ -30,6 +30,7 @@ export default function Register({ onRegister, onSwitchToLogin }) {
         setError(result.message || 'Error al registrarse');
       }
     } catch (err) {
+      console.error('Error de conexión:', err);
       setError('Error de conexión. Verifica que el servidor esté activo.');
     } finally {
       setLoading(false);
@@ -41,7 +42,7 @@ export default function Register({ onRegister, onSwitchToLogin }) {
       <div className="auth-card">
         <h1 className="auth-title">Quiz UTP</h1>
         <h2 className="auth-subtitle">Crear Cuenta</h2>
-        
+
         <form onSubmit={handleSubmit} className="auth-form">
           <input
             type="text"
@@ -51,7 +52,7 @@ export default function Register({ onRegister, onSwitchToLogin }) {
             required
             className="auth-input"
           />
-          
+
           <input
             type="email"
             placeholder="Email"
@@ -60,7 +61,7 @@ export default function Register({ onRegister, onSwitchToLogin }) {
             required
             className="auth-input"
           />
-          
+
           <input
             type="password"
             placeholder="Contraseña"
@@ -69,7 +70,7 @@ export default function Register({ onRegister, onSwitchToLogin }) {
             required
             className="auth-input"
           />
-          
+
           <input
             type="password"
             placeholder="Confirmar Contraseña"
@@ -78,16 +79,16 @@ export default function Register({ onRegister, onSwitchToLogin }) {
             required
             className="auth-input"
           />
-          
+
           {error && <p className="auth-error">{error}</p>}
-          
+
           <button type="submit" disabled={loading} className="auth-button">
             {loading ? 'Registrando...' : 'Registrarse'}
           </button>
         </form>
-        
+
         <p className="auth-switch">
-          ¿Ya tienes cuenta? 
+          ¿Ya tienes cuenta?
           <button onClick={onSwitchToLogin} className="auth-link">
             Inicia sesión aquí
           </button>

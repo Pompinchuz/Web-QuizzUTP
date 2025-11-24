@@ -1,5 +1,5 @@
 // src/services/api.js
-const API_URL = 'http://localhost:8080/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 // Función helper para obtener el token
 const getAuthHeader = () => {
@@ -12,7 +12,7 @@ export const authService = {
     const response = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
+      body: JSON.stringify(userData),
     });
     const data = await response.json();
     if (data.success && data.token) {
@@ -26,7 +26,7 @@ export const authService = {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     });
     const data = await response.json();
     if (data.success && data.token) {
@@ -38,11 +38,11 @@ export const authService = {
 
   async validateToken() {
     const token = localStorage.getItem('token');
-    if (!token) return { valid: false };
-    
+    if (!token) {return { valid: false };}
+
     try {
       const response = await fetch(`${API_URL}/auth/validate`, {
-        headers: getAuthHeader()
+        headers: getAuthHeader(),
       });
       return response.json();
     } catch {
@@ -65,32 +65,32 @@ export const authService = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        ...getAuthHeader()
+        ...getAuthHeader(),
       },
-      body: JSON.stringify({ score })
+      body: JSON.stringify({ score }),
     });
     return response.json();
-  }
+  },
 };
 
 export const questionService = {
   async getRandomQuestions(count) {
     const response = await fetch(`${API_URL}/questions/random/${count}`);
     return response.json();
-  }
+  },
 };
 
 export const adminService = {
   async getAllQuestions() {
     const response = await fetch(`${API_URL}/admin/questions`, {
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
   },
 
   async getQuestionById(id) {
     const response = await fetch(`${API_URL}/admin/questions/${id}`, {
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
   },
@@ -100,9 +100,9 @@ export const adminService = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        ...getAuthHeader()
+        ...getAuthHeader(),
       },
-      body: JSON.stringify(questionData)
+      body: JSON.stringify(questionData),
     });
     return response.json();
   },
@@ -112,9 +112,9 @@ export const adminService = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        ...getAuthHeader()
+        ...getAuthHeader(),
       },
-      body: JSON.stringify(questionData)
+      body: JSON.stringify(questionData),
     });
     return response.json();
   },
@@ -122,17 +122,17 @@ export const adminService = {
   async deleteQuestion(id) {
     const response = await fetch(`${API_URL}/admin/questions/${id}`, {
       method: 'DELETE',
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
   },
 
   async getStats() {
     const response = await fetch(`${API_URL}/admin/stats`, {
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
-  }
+  },
 };
 
 export const reportService = {
@@ -141,31 +141,31 @@ export const reportService = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        ...getAuthHeader()
+        ...getAuthHeader(),
       },
-      body: JSON.stringify(resultData)
+      body: JSON.stringify(resultData),
     });
     return response.json();
   },
 
   async getMyResults() {
     const response = await fetch(`${API_URL}/reports/my-results`, {
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
   },
 
   async getAllResults() {
     const response = await fetch(`${API_URL}/reports/all-results`, {
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
   },
 
   async getGeneralStats() {
     const response = await fetch(`${API_URL}/reports/general-stats`, {
-      headers: getAuthHeader()
+      headers: getAuthHeader(),
     });
     return response.json();
-  }
+  },
 };

@@ -22,6 +22,7 @@ export default function Login({ onLogin, onSwitchToRegister }) {
         setError(result.message || 'Error al iniciar sesión');
       }
     } catch (err) {
+      console.error(err);
       setError('Error de conexión. Verifica que el servidor esté activo.');
     } finally {
       setLoading(false);
@@ -33,7 +34,6 @@ export default function Login({ onLogin, onSwitchToRegister }) {
       <div className="auth-card">
         <h1 className="auth-title">Quiz UTP</h1>
         <h2 className="auth-subtitle">Iniciar Sesión</h2>
-        
         <form onSubmit={handleSubmit} className="auth-form">
           <input
             type="text"
@@ -43,7 +43,6 @@ export default function Login({ onLogin, onSwitchToRegister }) {
             required
             className="auth-input"
           />
-          
           <input
             type="password"
             placeholder="Contraseña"
@@ -52,16 +51,13 @@ export default function Login({ onLogin, onSwitchToRegister }) {
             required
             className="auth-input"
           />
-          
           {error && <p className="auth-error">{error}</p>}
-          
           <button type="submit" disabled={loading} className="auth-button">
             {loading ? 'Iniciando...' : 'Iniciar Sesión'}
           </button>
         </form>
-        
         <p className="auth-switch">
-          ¿No tienes cuenta? 
+          ¿No tienes cuenta?
           <button onClick={onSwitchToRegister} className="auth-link">
             Regístrate aquí
           </button>
