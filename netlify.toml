@@ -1,7 +1,7 @@
 [build]
   base = "frontend"
-  command = "npm run build"
   publish = "frontend/dist"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
@@ -9,20 +9,4 @@
   status = 200
 
 [build.environment]
-  NODE_VERSION = "18"
-```
-
-### 4. Crea un archivo `.env.example` para documentar
-
-**`frontend/.env.example`**
-```
-VITE_API_URL=https://tu-backend-en-vercel.vercel.app/api
-```
-
-### 5. Actualiza el `.gitignore`
-
-Asegúrate de que tu `.gitignore` incluya:
-```
-.env
-.env.local
-.env.production
+  NODE_VERSION = "22.17.1"
