@@ -12,7 +12,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://quizz-utp.netlify.app"  // ← Cambia por tu URL real de Netlify
+})
 public class AuthController {
     
     @Autowired

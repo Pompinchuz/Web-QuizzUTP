@@ -10,7 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/questions")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://quizz-utp.netlify.app"  // ← Cambia por tu URL real de Netlify
+})
 public class QuestionController {
     
     @Autowired
