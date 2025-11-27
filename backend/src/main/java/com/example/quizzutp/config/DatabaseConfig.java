@@ -20,14 +20,15 @@ public class DatabaseConfig {
         String databaseUrl = System.getenv("DATABASE_URL");
         
         if (databaseUrl != null && !databaseUrl.isEmpty()) {
-            // Render provee: postgresql://user:password@host:port/database
-            // Spring Boot necesita: jdbc:postgresql://host:port/database
-            
             URI dbUri = new URI(databaseUrl);
             
             String username = dbUri.getUserInfo().split(":")[0];
             String password = dbUri.getUserInfo().split(":")[1];
-            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+            
+            // Si el puerto es -1, usar el puerto por defecto de PostgreSQL (5432)
+            int port = dbUri.getPort() != -1 ? dbUri.getPort() : 5432;
+            
+            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + port + dbUri.getPath();
 
             System.out.println("✅ Conectando a: " + dbUrl);
             System.out.println("✅ Usuario: " + username);
