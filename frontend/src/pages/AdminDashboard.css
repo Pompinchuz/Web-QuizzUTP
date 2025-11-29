@@ -154,11 +154,14 @@
   }
   
   .question-text {
-    max-width: 500px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    max-width: none;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
   }
+
+
+
   
   .badge {
     padding: 5px 15px;

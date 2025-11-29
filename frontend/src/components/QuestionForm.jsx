@@ -16,11 +16,20 @@ export default function QuestionForm({ question, onSubmit, onCancel }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    if (question) {
-      setFormData(question);
-    }
-  }, [question]);
+ useEffect(() => {
+  console.log("Pregunta recibida:", question);
+  if (question) {
+    setFormData({
+      questionText: question.questionText ?? '',
+      option1: question.option1 ?? '',
+      option2: question.option2 ?? '',
+      option3: question.option3 ?? '',
+      option4: question.option4 ?? '',
+      correctAnswer: question.correctAnswer ?? 1,
+      difficulty: question.difficulty ?? 'medio',
+    });
+  }
+}, [question]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

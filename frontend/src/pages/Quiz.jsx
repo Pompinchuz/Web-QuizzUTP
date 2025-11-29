@@ -17,8 +17,10 @@ export default function Quiz({ user, onFinish }) {
   }, []);
 
   const loadQuestions = async () => {
+     console.log("Cargando preguntas...");
     try {
       const data = await questionService.getRandomQuestions(10);
+      console.log("Respuesta del servidor:", data);
       setQuestions(data);
       setLoading(false);
     } catch (error) {
