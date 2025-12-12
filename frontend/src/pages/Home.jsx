@@ -11,7 +11,7 @@ export default function Home({ onNavigateToLogin, onNavigateToRegister }) {
       title: 'Quiz UTP',
       subtitle: 'Sistema de Evaluación Interactiva',
       description: 'Plataforma moderna para realizar evaluaciones académicas de forma interactiva y eficiente',
-      icon: '🎓'
+      icon: '🎓',
     },
     {
       id: 'features',
@@ -32,8 +32,8 @@ export default function Home({ onNavigateToLogin, onNavigateToRegister }) {
           icon: '🎯',
           title: 'Resultados Instantáneos',
           description: 'Obtén retroalimentación inmediata de tu desempeño con análisis detallado de respuestas'
-        }
-      ]
+        },
+      ],
     },
     {
       id: 'benefits',
@@ -54,8 +54,8 @@ export default function Home({ onNavigateToLogin, onNavigateToRegister }) {
           icon: '📱',
           title: 'Acceso Multiplataforma',
           description: 'Realiza tus evaluaciones desde cualquier dispositivo: PC, tablet o móvil'
-        }
-      ]
+        },
+      ],
     },
     {
       id: 'cta',
@@ -199,8 +199,8 @@ export default function Home({ onNavigateToLogin, onNavigateToRegister }) {
           </div>
           <div className="footer-section">
             <h4>Contacto</h4>
-            <p>Universidad Tecnológica de Panamá</p>
-            <p>Campus Central, Panamá</p>
+            <p>Universidad Tecnológica del Perú</p>
+            <p>Campus Chiclayo, Perú</p>
           </div>
           <div className="footer-section">
             <h4>Enlaces Rápidos</h4>
@@ -209,7 +209,7 @@ export default function Home({ onNavigateToLogin, onNavigateToRegister }) {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 Universidad Tecnológica de Panamá. Todos los derechos reservados.</p>
+          <p>&copy; 2025 Universidad Tecnológica del Perú. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>

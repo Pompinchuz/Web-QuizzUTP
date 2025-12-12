@@ -143,6 +143,7 @@
   td {
     padding: 18px 20px;
     border-bottom: 1px solid #f0f0f0;
+    color: #333;
   }
   
   tbody tr {
@@ -158,11 +159,10 @@
     overflow: visible;
     text-overflow: clip;
     white-space: normal;
+    color: #333;
+    font-weight: 500;
   }
 
-
-
-  
   .badge {
     padding: 5px 15px;
     border-radius: 20px;
