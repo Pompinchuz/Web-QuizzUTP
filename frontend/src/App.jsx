@@ -1,6 +1,7 @@
 
 // src/App.jsx
 import { useState, useEffect } from 'react';
+import Home from './pages/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './pages/Dashboard';
@@ -32,10 +33,10 @@ function App() {
         }
       } else {
         authService.logout();
-        setCurrentView('login');
+        setCurrentView('home');
       }
     } else {
-      setCurrentView('login');
+      setCurrentView('home');
     }
   };
 
@@ -76,7 +77,7 @@ function App() {
   const handleLogout = () => {
     authService.logout();
     setUser(null);
-    setCurrentView('login');
+    setCurrentView('home');
   };
 
   if (currentView === 'loading') {
@@ -89,6 +90,13 @@ function App() {
 
   return (
     <div className="app">
+      {currentView === 'home' && (
+        <Home
+          onNavigateToLogin={() => setCurrentView('login')}
+          onNavigateToRegister={() => setCurrentView('register')}
+        />
+      )}
+
       {currentView === 'login' && (
         <Login
           onLogin={handleLogin}

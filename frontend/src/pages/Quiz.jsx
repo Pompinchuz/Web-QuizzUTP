@@ -17,7 +17,7 @@ export default function Quiz({ user, onFinish }) {
   }, []);
 
   const loadQuestions = async () => {
-     console.log("Cargando preguntas...");
+    console.log("Cargando preguntas...");
     try {
       const data = await questionService.getRandomQuestions(10);
       console.log("Respuesta del servidor:", data);
@@ -30,7 +30,7 @@ export default function Quiz({ user, onFinish }) {
   };
 
   const handleAnswerClick = (answerIndex) => {
-    if (answered) {return;}
+    if (answered) return;
 
     setSelectedAnswer(answerIndex);
     setAnswered(true);
@@ -58,7 +58,6 @@ export default function Quiz({ user, onFinish }) {
     const incorrectAnswers = questions.length - correctAnswers;
 
     try {
-      // Guardar resultado en la base de datos
       await reportService.saveResult({
         score: finalScore,
         totalQuestions: questions.length,
@@ -66,90 +65,131 @@ export default function Quiz({ user, onFinish }) {
         incorrectAnswers: incorrectAnswers,
       });
 
-      // Actualizar mejor puntuación
       await authService.updateScore(user.id, finalScore);
     } catch (error) {
       console.error('Error al guardar resultado:', error);
     }
   };
 
-  const getAnswerClass = (index) => {
-    if (!answered) {return 'answer-option';}
+  const getOptionClass = (index) => {
+    if (!answered) return 'option-button';
 
     const isCorrect = index === questions[currentQuestion].correctAnswer;
     const isSelected = index === selectedAnswer;
 
-    if (isCorrect) {return 'answer-option correct';}
-    if (isSelected && !isCorrect) {return 'answer-option incorrect';}
-    return 'answer-option';
+    if (isCorrect) return 'option-button correct';
+    if (isSelected && !isCorrect) return 'option-button incorrect';
+    return 'option-button';
   };
 
   if (loading) {
     return (
       <div className="quiz-container">
-        <div className="loading">Cargando preguntas...</div>
+        <div className="quiz-loading">Cargando preguntas...</div>
       </div>
     );
   }
 
   if (showResult) {
+    const correctAnswers = Math.floor(score / 10);
+    const incorrectAnswers = questions.length - correctAnswers;
+    const percentage = (score / (questions.length * 10)) * 100;
+
     return (
       <div className="quiz-container">
-        <div className="result-card">
-          <h1 className="result-title">¡Quiz Completado!</h1>
-          <div className="result-score">
-            <span className="score-label">Tu puntuación</span>
-            <span className="score-value">{score}</span>
-            <span className="score-total">de {questions.length * 10}</span>
+        <div className="quiz-body">
+          <div className="results-card">
+            <div className="results-icon">
+              {percentage >= 80 ? '🎉' : percentage >= 60 ? '👍' : percentage >= 40 ? '💪' : '📚'}
+            </div>
+            <h1 className="results-title">¡Quiz Completado!</h1>
+            <div className="results-score">{score} pts</div>
+            
+            <div className="results-stats">
+              <div className="stat-item">
+                <div className="stat-label">Correctas</div>
+                <div className="stat-value correct">{correctAnswers}</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-label">Incorrectas</div>
+                <div className="stat-value incorrect">{incorrectAnswers}</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-label">Porcentaje</div>
+                <div className="stat-value">{percentage.toFixed(0)}%</div>
+              </div>
+            </div>
+
+            <p style={{ color: '#666', fontSize: '1.2rem', margin: '20px 0' }}>
+              {percentage >= 80 ? '¡Excelente trabajo!' :
+                percentage >= 60 ? '¡Buen trabajo!' :
+                  percentage >= 40 ? 'Sigue practicando' :
+                    'Necesitas estudiar más'}
+            </p>
+
+            <div className="results-actions">
+              <button onClick={onFinish} className="results-button primary">
+                Volver al Dashboard
+              </button>
+            </div>
           </div>
-          <div className="result-message">
-            {score >= 80 ? '🎉 ¡Excelente trabajo!' :
-              score >= 60 ? '👍 ¡Buen trabajo!' :
-                score >= 40 ? '💪 Sigue practicando' :
-                  '📚 Necesitas estudiar más'}
-          </div>
-          <button onClick={onFinish} className="return-button">
-            Volver al Inicio
-          </button>
         </div>
       </div>
     );
   }
 
   const question = questions[currentQuestion];
+  const letters = ['A', 'B', 'C', 'D'];
 
   return (
     <div className="quiz-container">
+      {/* Header */}
       <div className="quiz-header">
-        <div className="progress-bar">
-          <div
-            className="progress-fill"
-            style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-          />
-        </div>
-        <div className="quiz-info-bar">
-          <span className="question-counter">
-            Pregunta {currentQuestion + 1} de {questions.length}
-          </span>
-          <span className="current-score">Puntuación: {score}</span>
+        <div className="quiz-header-content">
+          <div className="quiz-logo">
+            <span className="quiz-logo-icon">🎓</span>
+            <span className="quiz-logo-text">Quiz UTP</span>
+          </div>
+          <div className="quiz-header-info">
+            <span className="quiz-progress">
+              Pregunta {currentQuestion + 1}/{questions.length}
+            </span>
+            <span className="quiz-timer">
+              Puntuación: {score}
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="question-card">
-        <h2 className="question-text">{question.questionText}</h2>
+      {/* Body */}
+      <div className="quiz-body">
+        <div className="quiz-content">
+          <div className="question-card">
+            <div className="question-header">
+              <span className="question-number">
+                Pregunta {currentQuestion + 1} de {questions.length}
+              </span>
+              <span className={`question-difficulty difficulty-${question.difficulty.toLowerCase()}`}>
+                {question.difficulty}
+              </span>
+            </div>
 
-        <div className="answers-grid">
-          {[1, 2, 3, 4].map((num) => (
-            <button
-              key={num}
-              onClick={() => handleAnswerClick(num)}
-              className={getAnswerClass(num)}
-              disabled={answered}
-            >
-              <span className="answer-number">{num}</span>
-              <span className="answer-text">{question[`option${num}`]}</span>
-            </button>
-          ))}
+            <p className="question-text">{question.questionText}</p>
+
+            <div className="options-container">
+              {[1, 2, 3, 4].map((num, index) => (
+                <button
+                  key={num}
+                  onClick={() => handleAnswerClick(num)}
+                  className={getOptionClass(num)}
+                  disabled={answered}
+                >
+                  <span className="option-letter">{letters[index]}</span>
+                  <span className="option-text">{question[`option${num}`]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
